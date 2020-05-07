@@ -5,12 +5,15 @@ CloudFlare Terraform module for setup GitHub Pages.
 ## Usage
 
 ```hcl
-module "github_page" {
-	source = "ngs/github-pages/cloudflare"
+resource "cloudflare_zone" "example" {
+  zone = "example.com"
+}
 
-	domain   = "myblog.tld"
-	name     = "@"
-	username = "ngs"
+module "ghpage" {
+  zone_id  = cloudflare_zone.example.id
+  source   = "ngs/github-pages/cloudflare"
+  name     = "@"
+  username = "ngs"
 }
 ```
 
@@ -18,7 +21,7 @@ module "github_page" {
 
 | Name       | Description                                     |
 | ---------- | ----------------------------------------------- |
-| `domain`   | The DNS zone to add the record to               |
+| `zone_id`  | The DNS zone ID to add the record to            |
 | `name`     | The name of the record. Use `@` for root domain |
 | `username` | GitHub username                                 |
 
@@ -30,5 +33,5 @@ module "github_page" {
 
 MIT. See [LICENSE]
 
-[Atushi Nagase]: https://ngs.io/
-[LICENSE]: LICENSE
+[atushi nagase]: https://ngs.io/
+[license]: LICENSE
