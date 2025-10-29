@@ -9,4 +9,3 @@ module "test-ghpage" {
   name     = "@"
   username = "ngs"
 }
-
