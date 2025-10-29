@@ -1,6 +1,8 @@
 resource "cloudflare_zone" "example" {
-  account = "dummy-account-id"
-  name    = "example.com"
+  account = {
+    id = "dummy-account-id"
+  }
+  name = "example.com"
 }
 
 module "test-ghpage" {
