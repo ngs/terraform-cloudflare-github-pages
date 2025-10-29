@@ -1,5 +1,8 @@
 resource "cloudflare_zone" "example" {
-  zone = "example.com"
+  account = {
+    id = "dummy-account-id"
+  }
+  name = "example.com"
 }
 
 module "test-ghpage" {
@@ -8,4 +11,3 @@ module "test-ghpage" {
   name     = "@"
   username = "ngs"
 }
-
